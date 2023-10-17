@@ -46,6 +46,18 @@ recognition.onresult = function (event) {
 
   // update DOM
   document.querySelector("#commando").innerHTML = recognizedSpeech;
+
+  // Check if recognizedSpeech is "start" or "stop"
+  if (recognizedSpeech === "start") {
+    // Play the audio
+    audio.play();
+  } else if (recognizedSpeech === "stop") {
+    // Pause the audio
+    audio.pause();
+  } else {
+    // For other commands, you can call the makeImage function
+    makeImage(recognizedSpeech);
+  }
 };
 
 // the function that makes images
