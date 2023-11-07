@@ -31,8 +31,12 @@ recognition.continuous = true;
 recognition.lang = "nl-NL";
 recognition.interimResults = false;
 
-// start listinging
-recognition.start();
+
+// first click on page to enable speech recognition
+document.addEventListener("click", () => {
+  recognition.start();
+});
+
 
 // on result, log result
 recognition.onresult = function (event) {
@@ -50,9 +54,13 @@ recognition.onresult = function (event) {
   // Check if recognizedSpeech is "start" or "stop"
   if (recognizedSpeech === "start") {
     // Play the audio
-    audio.play();
+    audio.play().catch((error) => {
+      console.log("audio started");
+      console.log("audio error:" + error);
+    });
   } else if (recognizedSpeech === "stop") {
     // Pause the audio
+    console.log("audio stopped");
     audio.pause();
   } else {
     // For other commands, you can call the makeImage function
