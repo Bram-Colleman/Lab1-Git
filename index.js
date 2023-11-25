@@ -54,8 +54,8 @@ recognition.onresult = function (event) {
   // Check if recognizedSpeech is "start" or "stop"
   if (recognizedSpeech === "start") {
     // Play the audio
+    console.log("audio started");
     audio.play().catch((error) => {
-      console.log("audio started");
       console.log("audio error:" + error);
     });
   } else if (recognizedSpeech === "stop") {
