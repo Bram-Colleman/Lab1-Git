@@ -62,6 +62,12 @@ recognition.onresult = function (event) {
     // Pause the audio
     console.log("audio stopped");
     audio.pause();
+  } else if (recognizedSpeech === "licht uit") {
+    // Go dark
+    document.querySelector("body").style.filter = "brightness(0.2)";
+  } else if (recognizedSpeech === "licht aan") {
+    // Go dark
+    document.querySelector("body").style.filter = "brightness(1)";
   } else {
     // For other commands, you can call the makeImage function
     makeImage(recognizedSpeech);
